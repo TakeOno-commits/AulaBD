@@ -14,3 +14,16 @@ create table vdas(
     cli_id int,
     carro_id int
 );
+insert into cad_clis(nome) values
+("Bruce Wayne"),
+("Tony Stark"),
+("Tio Patinhas");
+insert into cad_carros(nome, preco) values
+("fiat Uno" , 9500),
+("Fusca", 7500),
+("opala", 5200);
+
+insert into vdas(cli_id, carro_id) values
+(1,3),
+(2,2),
+(3,1);
