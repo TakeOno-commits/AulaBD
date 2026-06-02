@@ -1,29 +1,28 @@
+drop database carrosdb;
 create database carrosdb;
 use carrosdb;
-create table cad_clis(
+create table clientes(
     id int primary key auto_increment,
     nome varchar(100) not null
+    idade int
 );
-create table cad_carros(
+create table carros(
     id int primary key auto_increment,
     nome varchar(100) not null,
     pco float
 );
-create table vdas(
+create table vendas(
     id int primary key auto_increment,
-    cli_id int,
-    carro_id int
+    clientes_id int,
+    carros_id int,
+    foreign key (carro_id) references carros(id),
+    foreign key (clientes_id) references clientes(id),
+    foreign key (vendas_id) references vendas(id)
 );
-insert into cad_clis(nome) values
-("Bruce Wayne"),
-("Tony Stark"),
-("Tio Patinhas");
-insert into cad_carros(nome, preco) values
-("fiat Uno" , 9500),
-("Fusca", 7500),
-("opala", 5200);
+insert into carros (nome) values ('ferrari');
+insert into clientes(nome) values ("Gauss");
+insert into vendas(carros_id, clientes_id ) values (1,100);
 
-insert into vdas(cli_id, carro_id) values
-(1,3),
-(2,2),
-(3,1);
+select*from carros;
+select*from clientes;
+select*from vendas;
