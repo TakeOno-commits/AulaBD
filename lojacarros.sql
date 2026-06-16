@@ -4,25 +4,23 @@ use carrosdb;
 create table clientes(
     id int primary key auto_increment,
     nome varchar(100) not null
-    idade int
 );
-create table carros(
+create table produtos(
     id int primary key auto_increment,
     nome varchar(100) not null,
     pco float
 );
 create table vendas(
     id int primary key auto_increment,
-    clientes_id int,
-    carros_id int,
-    foreign key (carro_id) references carros(id),
-    foreign key (clientes_id) references clientes(id),
-    foreign key (vendas_id) references vendas(id)
+    cli_id int,
+    prod_id int      
 );
-insert into carros (nome) values ('ferrari');
-insert into clientes(nome) values ("Gauss");
-insert into vendas(carros_id, clientes_id ) values (1,100);
-
-select*from carros;
-select*from clientes;
-select*from vendas;
+ 
+ALTER TABLE vendas ADD CONSTRAINT fk_cli_id FOREIGN KEY (cli_id) REFERENCES clientes(id);
+ 
+insert into clientes (nome) value ('Claude Shannon');
+insert into produtos (nome) value ('Monza');
+insert into vendas (cli_id, prod_id) values (1,1);
+insert into vendas (cli_id, prod_id) values (50,50);
+ 
+select * from vendas;
